@@ -43,7 +43,7 @@ function Addblog(props) {
   }, [location.pathname, state]);
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <div className="signbox" style={{ marginTop: "100px" }}>
         <BlogAddUpdate
           state={state}

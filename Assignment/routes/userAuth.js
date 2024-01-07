@@ -8,6 +8,7 @@ const { body, validationResult } = require("express-validator");
 const fetchuser = require("../middleware/userfetch");
 
 const jwtsect = process.env.SKEY;
+
 router.post(
   "/userSignup",
   [
@@ -20,13 +21,11 @@ router.post(
     let success = true;
 
     const { name, email, password, cpassword } = req.body;
-
     //if there are errpr , return bad request and thr error
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     try {
       let client = await UserData.findOne({ email: email });
 
@@ -56,7 +55,9 @@ router.post(
           return res.status(200).json({ success, saveclient, jwttoken });
         } else {
           success = false;
-          return res.status(400).send({ success, mes: " password is not same" });
+          return res
+            .status(400)
+            .send({ success, mes: " password is not same" });
         }
       }
     } catch (error) {
@@ -99,25 +100,21 @@ router.post(
           error: "please use correct credentials",
         });
       }
-
       const data = {
         user: {
           id: user.id,
         },
       };
       const jwttoken = jwt.sign(data, jwtsect);
-
       success = true;
       const username = user.name;
-      res
-        .status(200)
-        .json({
-          success,
-          mess: "login success full",
-          jwttoken,
-          email,
-          username,
-        });
+      res.status(200).json({
+        success,
+        mess: "login success full",
+        jwttoken,
+        email,
+        username,
+      });
     } catch (e) {
       res.status(500).send("somenting went wrong user not login ");
     }

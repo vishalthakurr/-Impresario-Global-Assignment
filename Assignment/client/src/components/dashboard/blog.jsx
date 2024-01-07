@@ -87,7 +87,9 @@ const Blog = () => {
                 <img src="https://dummyimage.com/424x264" alt="error" />
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="m-1">{item.title}</h5>
+                    <h6 className="m-1">
+                      {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
+                    </h6>
                     {getUserEmail() === item.email && (
                       <div className="d-flex m-1 justify-content-center align-items-center">
                         <Link to={`/updateBlog/${item._id}`}>
@@ -112,8 +114,11 @@ const Blog = () => {
                       </div>
                     )}
                   </div>
-                  <p className="m-1" style={{ color: "gray" }}>
-                    author - {item.user}{" "}
+                  <p
+                    className="m-1"
+                    style={{ color: "gray", fontSize: "15px" }}
+                  >
+                    Author - {item.user}
                   </p>
                   <p
                     className="m-1"
@@ -125,7 +130,7 @@ const Blog = () => {
                   </p>
                   <div className="m-1 d-flex justify-content-between align-items-center">
                     <div className="text-muted" style={{ fontSize: "12px" }}>
-                      Create At - {new Date(item.date).toGMTString()}
+                      Date - {new Date(item.date).toGMTString()}
                     </div>
                     <Link className="btn p-0 mx-1" to={`/article/${item._id}`}>
                       <div style={{ color: "red", fontSize: "12px" }}>
@@ -138,7 +143,7 @@ const Blog = () => {
             );
           })
         ) : (
-          <div style={{ color: "white", height: "100vh", textAlign: "center" }}>
+          <div style={{ color: "white", textAlign: "center" }}>
             No Blog found
           </div>
         )}

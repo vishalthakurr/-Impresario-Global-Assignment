@@ -37,7 +37,7 @@ const ArticleDetail = ({ match }) => {
   return (
     <div
       style={{
-        height: "100vh",
+        marginTop: "20px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

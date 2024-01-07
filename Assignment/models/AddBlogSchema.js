@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
-// user: {
-//   type: mongoose.SchemaTypes.ObjectId,
-//   ref: "UserData",
-// },
+
 const userBlogSchema = new mongoose.Schema({
   user: {
     type: String,

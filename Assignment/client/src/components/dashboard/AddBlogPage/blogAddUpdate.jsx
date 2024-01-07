@@ -101,7 +101,7 @@ const AlogAddUpdate = ({ state, data, setdata, locationName }) => {
             onChange={handleclick}
             aria-describedby="title"
             placeholder="Blog Title"
-            minLength={5}
+            maxLength={20}
           />
         </div>
         <div className="my-3">

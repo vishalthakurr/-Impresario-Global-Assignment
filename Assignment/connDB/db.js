@@ -1,18 +1,16 @@
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', false);
-const mongoUri = process.env.CONNECT; //mongodb altes used datatbase
+mongoose.set("strictQuery", false);
+const mongoUri = process.env.CONNECT;
 
 mongoose
   .connect(mongoUri, {
-    // useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // useFindAndModify :false
   })
   .then(() => {
-    console.log(" Database connection suceesful");
+    console.log(" Database connected suceesful");
   })
   .catch((e) => {
     console.log(e);
